@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Department;
+use App\Http\Requests\Department\Store;
+use App\Http\Requests\Department\Update;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -14,7 +16,11 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::all();
+
+        return view("modules.departments.index")->with(compact(
+            'departments'
+        ));
     }
 
     /**
@@ -24,7 +30,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view("modules.departments.create");
     }
 
     /**
@@ -33,20 +39,17 @@ class DepartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Store $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Department  $department
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Department $department)
-    {
-        //
+        $department = Department::create($request->all());
+        
+        if ($department) {
+            toastr()->success('Setor cadastrado com sucesso');
+            return redirect()->route('departments.index');
+        } else {
+            toastr()->error('Hovue um erro ao cadastrar o setor!');
+            return redirect()->back()->withInput();
+        }
     }
 
     /**
@@ -57,7 +60,9 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        //
+        return view("modules.departments.edit")->with(compact(
+            'department'
+        ));
     }
 
     /**
@@ -67,9 +72,17 @@ class DepartmentController extends Controller
      * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(Update $request, Department $department)
     {
-        //
+        $department = $department->update($request->all());
+
+        if ($department) {
+            toastr()->success('Setor atualizado com sucesso');
+            return redirect()->route('departments.index');
+        } else {
+            toastr()->error('Hovue um erro ao atualizar o setor!');
+            return redirect()->back()->withInput();
+        }
     }
 
     /**
@@ -80,6 +93,14 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        $department = $department->delete();
+
+        if ($department) {
+            toastr()->success('Setor removido com sucesso');
+            return redirect()->back();
+        } else {
+            toastr()->error('Hovue um erro ao remover o setor!');
+            return redirect()->back();
+        }
     }
 }

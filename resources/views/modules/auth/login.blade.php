@@ -11,7 +11,7 @@
             
             <div class="col-md-12 form-group">
                 {!! Form::label('email', 'E-mail: *') !!}
-                {!! Form::email('email', null, ['class' => 'form-control', 'required']) !!}
+                {!! Form::email('email', null, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : null), 'required']) !!}
                 @error('email')
                     <span class="small text-danger mt-xs">
                         <strong>{{ $message }}</strong>
@@ -21,7 +21,7 @@
             
             <div class="col-md-12 form-group">
                 {!! Form::label('password', 'Senha: *') !!}
-                {!! Form::password('password', ['class' => 'form-control', 'required']) !!}
+                {!! Form::password('password', ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : null), 'required']) !!}
                 @error('password')
                 <span class="small text-danger mt-xs">
                         <strong>{{ $message }}</strong>

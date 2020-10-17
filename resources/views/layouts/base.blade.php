@@ -5,10 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>OurMeeting @yield('title')</title>
+    <title>@yield('title') OurMeeting</title>
 
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/system.css') }}" rel="stylesheet">
+    @toastr_css
 </head>
 
 <body>
@@ -35,7 +36,25 @@
             </nav>
 
             <div class="container-fluid">
-                @yield("content")
+                <div class="main-content border">
+                    <div class="row">
+                        <div class="col-12 justify-content-between d-flex p-0">      
+                            <h2 class="col mb-0">
+                                @yield('main-title')
+                            </h2>
+                            <div class="col text-right">
+                                @yield('title-actions')
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <hr>
+                        </div>
+                    </div>
+
+                    @yield("content")
+                </div>
             </div>
 
         </div>
@@ -43,6 +62,8 @@
     </div>
 
     <script src="{{ asset('/js/app.js') }}"></script>
+    @toastr_js
+    @toastr_render
 
     <script>
         $("#menu-toggle").click(function (e) {
