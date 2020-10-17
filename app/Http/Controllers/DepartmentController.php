@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Department;
 use App\Http\Requests\Department\Store;
 use App\Http\Requests\Department\Update;
-use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
@@ -16,7 +15,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
+        $departments = Department::orderBy('name')->get();
 
         return view("modules.departments.index")->with(compact(
             'departments'
@@ -47,7 +46,7 @@ class DepartmentController extends Controller
             toastr()->success('Setor cadastrado com sucesso');
             return redirect()->route('departments.index');
         } else {
-            toastr()->error('Hovue um erro ao cadastrar o setor!');
+            toastr()->error('Houve um erro ao cadastrar o setor!');
             return redirect()->back()->withInput();
         }
     }
@@ -80,7 +79,7 @@ class DepartmentController extends Controller
             toastr()->success('Setor atualizado com sucesso');
             return redirect()->route('departments.index');
         } else {
-            toastr()->error('Hovue um erro ao atualizar o setor!');
+            toastr()->error('Houve um erro ao atualizar o setor!');
             return redirect()->back()->withInput();
         }
     }
@@ -99,7 +98,7 @@ class DepartmentController extends Controller
             toastr()->success('Setor removido com sucesso');
             return redirect()->back();
         } else {
-            toastr()->error('Hovue um erro ao remover o setor!');
+            toastr()->error('Houve um erro ao remover o setor!');
             return redirect()->back();
         }
     }

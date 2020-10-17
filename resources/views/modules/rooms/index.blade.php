@@ -1,9 +1,9 @@
 @extends('layouts.base')
 
-@section('main-title', 'Setores')
+@section('main-title', 'Salas')
 
 @section('title-actions')
-    <a class="btn btn-primary" href="{{ route('departments.create') }}"><i class="fas fa-plus"></i> Adicionar Setor</a>
+    <a class="btn btn-primary" href="{{ route('rooms.create') }}"><i class="fas fa-plus"></i> Adicionar Sala</a>
 @endsection
 
 @section('content')
@@ -13,18 +13,18 @@
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
-                    <th>Setor</th>
+                    <th>Sala</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse ($departments as $department)
+                @forelse ($rooms as $room)
                     <tr>
-                        <td>{{ $department->name }}</td>
+                        <td>{{ $room->name }}</td>
                         <td class="action-column">
-                            <a href="{{ route('departments.edit', $department->id) }}" class="btn btn-sm btn-secondary"><i class="fas fa-edit"></i> Editar</a>
+                            <a href="{{ route('rooms.edit', $room->id) }}" class="btn btn-sm btn-secondary"><i class="fas fa-edit"></i> Editar</a>
                             
-                            {!! Form::open(['route' => ['departments.destroy', $department->id], 'method' => 'DELETE' ]) !!}
+                            {!! Form::open(['route' => ['rooms.destroy', $room->id], 'method' => 'DELETE' ]) !!}
                                 <button class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja remover este registro?');"><i class="fas fa-trash"></i> Apagar</button>
                             {!! Form::close() !!}
                         </td>

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Room\Store;
+use App\Http\Requests\Room\Update;
 use App\Room;
-use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
@@ -14,7 +15,11 @@ class RoomController extends Controller
      */
     public function index()
     {
-        //
+        $rooms = Room::orderBy('name')->get();
+
+        return view("modules.rooms.index")->with(compact(
+            'rooms'
+        ));
     }
 
     /**
@@ -24,29 +29,26 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        return view("modules.rooms.create");
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Room\Store  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Store $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Room  $room
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Room $room)
-    {
-        //
+        $room = Room::create($request->all());
+        
+        if ($room) {
+            toastr()->success('Sala cadastrado com sucesso');
+            return redirect()->route('rooms.index');
+        } else {
+            toastr()->error('Houve um erro ao cadastrar a sala!');
+            return redirect()->back()->withInput();
+        }
     }
 
     /**
@@ -57,19 +59,29 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        //
+        return view("modules.rooms.edit")->with(compact(
+            'room'
+        ));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Room\Update  $request
      * @param  \App\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room)
+    public function update(Update $request, Room $room)
     {
-        //
+        $room = $room->update($request->all());
+
+        if ($room) {
+            toastr()->success('Sala atualizado com sucesso');
+            return redirect()->route('rooms.index');
+        } else {
+            toastr()->error('Houve um erro ao atualizar a Sala!');
+            return redirect()->back()->withInput();
+        }
     }
 
     /**
@@ -80,6 +92,14 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        //
+        $room = $room->delete();
+
+        if ($room) {
+            toastr()->success('Sala removido com sucesso');
+            return redirect()->back();
+        } else {
+            toastr()->error('Houve um erro ao remover a Sala!');
+            return redirect()->back();
+        }
     }
 }
