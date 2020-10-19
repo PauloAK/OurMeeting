@@ -7,17 +7,17 @@ O desenvolvimento deste projeto, desde planejamento e levantamento de requisitos
 
 ## Como Instalar/Configurar
 
-1. Clone o respositório
+1. Clone o respositório e acesse a pasta
 ```
 git clone https://github.com/PauloAK/OurMeeting.git
 ```
 
-2. Acesse a pasta e instale as dependências do composer
+2. Instale as dependências do composer
 ```
 composer install
 ```
 
-3. Acesse a pasta e instale as dependências do NPM
+3. Instale as dependências do NPM
 ```
 npm install
 ```
