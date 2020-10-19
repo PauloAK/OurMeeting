@@ -40,7 +40,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="2" class="text-center text-muted">Nenhum registro encontrado</td>
+                        <td colspan="5" class="text-center text-muted">Nenhum registro encontrado</td>
                     </tr>
                 @endforelse
             </tbody>

@@ -13,7 +13,7 @@ class Update extends FormRequest
      */
     public function authorize()
     {
-        return faltruese;
+        return true;
     }
 
     /**
