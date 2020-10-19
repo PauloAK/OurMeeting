@@ -61,6 +61,8 @@ php artisan serve
 ```
 
 11. Acesse o endereço que é exibido em seu navegador, geralmente é: 127.0.0.1:8000
+* **Usuário:** admin@ourmeeting.com
+* **Senha:** admin123
 
 
 ### Especificações
