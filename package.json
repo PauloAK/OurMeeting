@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.1",
+        "jquery-mask-plugin": "^1.14.16",
         "startbootstrap-simple-sidebar": "^5.1.2"
     }
 }

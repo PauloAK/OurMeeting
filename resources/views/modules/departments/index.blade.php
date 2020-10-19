@@ -1,5 +1,6 @@
 @extends('layouts.base')
 
+@section('title', 'Setores | ')
 @section('main-title', 'Setores')
 
 @section('title-actions')
@@ -23,7 +24,7 @@
                         <td>{{ $department->name }}</td>
                         <td class="action-column">
                             <a href="{{ route('departments.edit', $department->id) }}" class="btn btn-sm btn-secondary"><i class="fas fa-edit"></i> Editar</a>
-                            
+
                             {!! Form::open(['route' => ['departments.destroy', $department->id], 'method' => 'DELETE' ]) !!}
                                 <button class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja remover este registro?');"><i class="fas fa-trash"></i> Apagar</button>
                             {!! Form::close() !!}

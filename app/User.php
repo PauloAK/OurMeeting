@@ -12,7 +12,6 @@ class User extends Authenticatable
         'password',
         'phone',
         'admin',
-        'password'
     ];
 
     protected $hidden = [
@@ -20,7 +19,7 @@ class User extends Authenticatable
     ];
 
     public function department(){
-        return $this->hasOne(Departament::class, 'department_id');
+        return $this->belongsTo(Department::class, 'department_id');
     }
 
     public function meetings(){

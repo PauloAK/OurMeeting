@@ -35,7 +35,7 @@ class DepartmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Department\Store $request
      * @return \Illuminate\Http\Response
      */
     public function store(Store $request)
@@ -67,7 +67,7 @@ class DepartmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Department\Update  $request
      * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */

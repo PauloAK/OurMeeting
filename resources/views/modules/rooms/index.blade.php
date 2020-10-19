@@ -1,5 +1,6 @@
 @extends('layouts.base')
 
+@section('title', 'Salas | ')
 @section('main-title', 'Salas')
 
 @section('title-actions')

@@ -20,9 +20,11 @@ Route::namespace('Auth')->group(function() {
 Route::middleware('auth')->group( function() {
 
     Route::get('/', 'HomeController@index')->name('home');
-
-    Route::resource('users', 'UserController')->except('show');
-    Route::resource('departments', 'DepartmentController')->except('show');
-    Route::resource('rooms', 'RoomController')->except('show');
     Route::resource('meetings', 'MeetingController')->except('show');
+
+    Route::middleware('admin')->group( function() {
+        Route::resource('users', 'UserController')->except('show');
+        Route::resource('departments', 'DepartmentController')->except('show');
+        Route::resource('rooms', 'RoomController')->except('show');
+    });
 });

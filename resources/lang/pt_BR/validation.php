@@ -181,6 +181,9 @@ return [
         'year'      => 'ano',
         'description' => 'descrição',
         'password_confirmation' => 'confirmação da senha',
+        'current_password' => 'senha atual',
+        'new_password' => 'nova senha',
+        'department'=> 'setor',
     ],
 
 ];

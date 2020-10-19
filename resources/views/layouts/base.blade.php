@@ -62,6 +62,7 @@
     </div>
 
     <script src="{{ asset('/js/app.js') }}"></script>
+    <script src="{{ asset('/js/scripts.js') }}"></script>
     @toastr_js
     @toastr_render
 
