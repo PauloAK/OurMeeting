@@ -92,14 +92,14 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        $department = $department->delete();
-
-        if ($department) {
-            toastr()->success('Setor removido com sucesso');
-            return redirect()->back();
-        } else {
-            toastr()->error('Houve um erro ao remover o setor!');
+        if ($department->users()->count()){
+            toastr()->error('Não é possível remover este setor pois ele possui usuários vinculados');
             return redirect()->back();
         }
+
+        $department->delete();
+
+        toastr()->success('Setor removido com sucesso');
+        return redirect()->back();
     }
 }

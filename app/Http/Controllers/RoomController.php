@@ -92,14 +92,14 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        $room = $room->delete();
-
-        if ($room) {
-            toastr()->success('Sala removido com sucesso');
-            return redirect()->back();
-        } else {
-            toastr()->error('Houve um erro ao remover a Sala!');
+        if ($room->meetings()->count()){
+            toastr()->error('Não é possível remover esta sala pois ela possui reuniões vinculadas');
             return redirect()->back();
         }
+
+        $room->delete();
+
+        toastr()->success('Sala removido com sucesso');
+        return redirect()->back();
     }
 }

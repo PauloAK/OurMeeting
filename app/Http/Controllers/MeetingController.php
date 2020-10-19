@@ -152,15 +152,10 @@ class MeetingController extends Controller
     public function destroy(Meeting $meeting)
     {
         if ($meeting->user == Auth::user() || Auth::user()->admin) {
-            $meeting = $meeting->delete();
+            $meeting->delete();
 
-            if ($meeting) {
-                toastr()->success('Reunião removida com sucesso');
-                return redirect()->back();
-            } else {
-                toastr()->error('Houve um erro ao remover a reunião!');
-                return redirect()->back();
-            }
+            toastr()->success('Reunião removida com sucesso');
+            return redirect()->back();
         } else {
             toastr()->error('Você não tem permissão para remover essa reunião!');
             return redirect()->back();

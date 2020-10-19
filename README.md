@@ -92,17 +92,17 @@ php artisan serve
 ## Recursos e Conceitos
 
 * [ADMIN] CRUD - Usuários
-** Somente ADMINs  tem acesso à está área
-** Possibilidade de alteração de senha mediante validação.
+  * Somente ADMINs  tem acesso à está área
+  * Possibilidade de alteração de senha mediante validação.
 * [ADMIN] CRUD - Setores
-** Somente ADMINs  tem acesso à está área
+  * Somente ADMINs  tem acesso à está área
 * [ADMIN] CRUD - Salas
-** Somente ADMINs  tem acesso à está área
+  * Somente ADMINs  tem acesso à está área
 * Reuniões
-** Podem ter no máximo 60 minutos
-** Um usuário só pode marcar uma reunião por dia
-** Uma sala só pode ter uma reunião ao mesmo tempo
-** Usuário somente pode editar as suas reuniões, com exceção do ADMIN, que tem acesso à todas.
+  * Podem ter no máximo 60 minutos
+  * Um usuário só pode marcar uma reunião por dia
+  * Uma sala só pode ter uma reunião ao mesmo tempo
+  * Usuário somente pode editar as suas reuniões, com exceção do ADMIN, que tem acesso à todas.
 
 ## Diagrama Entidade Relacionamento
 

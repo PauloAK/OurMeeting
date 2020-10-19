@@ -135,14 +135,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user = $user->delete();
+        $user->delete();
 
-        if ($user) {
-            toastr()->success('Usuário removido com sucesso');
-            return redirect()->back();
-        } else {
-            toastr()->error('Houve um erro ao remover o usuário!');
-            return redirect()->back();
-        }
+        toastr()->success('Usuário removido com sucesso');
+        return redirect()->back();
     }
 }
