@@ -11,11 +11,16 @@ class Meeting extends Model
         'end'
     ];
 
+    protected $dates = [
+        'start',
+        'end',
+    ];
+
     public function room(){
-        return $this->hasOne(Room::class, 'room_id');
+        return $this->belongsTo(Room::class, 'room_id');
     }
 
     public function user(){
-        return $this->hasOne(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
